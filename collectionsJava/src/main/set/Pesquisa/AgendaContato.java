@@ -50,7 +50,7 @@ public class AgendaContato {
         agendaContato.adicionarContato("Bernardo Rocha", 45623);
 
         agendaContato.exibirContato();
-        System.out.println(agendaContato.pesquisarPorNome("camila"));
+        System.out.println(agendaContato.pesquisarPorNome("Camila"));
 
         System.out.println("Contato atualizado: " + agendaContato.atualizarNumeroContato("Bernardo Rocha", 27997));
     }
