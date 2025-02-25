@@ -26,13 +26,12 @@ public abstract class Conta implements IConta{
     }
 
     @Override
-    public void sacar(double valor) {
+    public boolean sacar(double valor) {
         if(this.balance>0 && this.balance >=valor) {
             this.balance -= valor;
-            System.out.println("Saque realizado com sucesso.");
-            System.out.println("Novo saldo: R$" + this.balance);
-        }else{
-            System.out.println("Saldo insuficiente.");
+            return true;
+        }else {
+            return false;
         }
     }
 
@@ -43,11 +42,13 @@ public abstract class Conta implements IConta{
 
     @Override
     public void transferir(double valor, Conta contaDestino) {
-        this.sacar(valor);
-        contaDestino.depositar(valor);
+        if(this.sacar(valor)) {
+            contaDestino.depositar(valor);
+        }
     }
 
     public void extrato() {
+        System.out.println("Titular: " + this.cliente.getNome());
         System.out.println("Agência: " + this.agency);
         System.out.println("Conta: " + this.account);
         System.out.println("Saldo: R$" + this.balance);
